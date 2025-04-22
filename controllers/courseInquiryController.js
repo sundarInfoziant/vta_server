@@ -26,9 +26,9 @@ if (hasRazorpayCredentials) {
 // @access  Public
 export const createCourseInquiry = async (req, res) => {
   try {
-    const { name, email, phone, courseId } = req.body;
+    const { name, email, phone, courseId, organization } = req.body;
     
-    if (!name || !email || !phone || !courseId) {
+    if (!name || !email || !phone || !courseId || !organization) {
       return res.status(400).json({ message: 'All fields are required' });
     }
     
@@ -43,6 +43,7 @@ export const createCourseInquiry = async (req, res) => {
       name,
       email,
       phone,
+      organization,
       courseId,
       courseName: course.title
     });
@@ -52,6 +53,7 @@ export const createCourseInquiry = async (req, res) => {
       name: inquiry.name,
       email: inquiry.email,
       phone: inquiry.phone,
+      organization: inquiry.organization, 
       courseId: inquiry.courseId,
       courseName: inquiry.courseName,
       message: 'Inquiry received successfully'
@@ -142,13 +144,15 @@ export const verifyInquiryPayment = async (req, res) => {
     const razorpayPaymentId = req.body.razorpayPaymentId || req.body.razorpay_payment_id;
     const razorpaySignature = req.body.razorpaySignature || req.body.razorpay_signature;
     const inquiryId = req.body.inquiryId;
+    const organization = req.body.organization;
     
     // Log the received payment details
     console.log('Payment verification details:', {
       razorpayOrderId,
       razorpayPaymentId,
       razorpaySignature, 
-      inquiryId
+      inquiryId,
+      organization  
     });
     
     // Find the inquiry
@@ -182,6 +186,9 @@ export const verifyInquiryPayment = async (req, res) => {
       inquiry.razorpaySignature = razorpaySignature;
       inquiry.paymentStatus = 'completed';
       inquiry.status = 'enrolled';
+      if (organization) {
+        inquiry.organization = organization;
+      }
       await inquiry.save();
       
       console.log(`Payment for inquiry ${inquiryId} verified successfully`);
@@ -193,6 +200,8 @@ export const verifyInquiryPayment = async (req, res) => {
           _id: inquiry._id,
           name: inquiry.name,
           email: inquiry.email,
+          phone: inquiry.phone,
+          organization: inquiry.organization,
           courseName: inquiry.courseName,
           status: inquiry.status
         }
@@ -232,9 +241,9 @@ export const verifyPaymentSimple = async (req, res) => {
       });
     }
     
-    const { paymentId, inquiryId } = req.body;
+    const { paymentId, inquiryId, organization } = req.body;
     
-    console.log('Simple payment verification with:', { paymentId, inquiryId });
+    console.log('Simple payment verification with:', { paymentId, inquiryId, organization });
     
     if (!paymentId || !inquiryId) {
       return res.status(400).json({ 
@@ -273,6 +282,9 @@ export const verifyPaymentSimple = async (req, res) => {
         inquiry.razorpayPaymentId = paymentId;
         inquiry.paymentStatus = 'completed';
         inquiry.status = 'enrolled';
+        if (organization) {
+          inquiry.organization = organization;
+        }
         await inquiry.save();
         
         console.log(`Payment ${paymentId} for inquiry ${inquiryId} verified successfully`);
@@ -284,6 +296,8 @@ export const verifyPaymentSimple = async (req, res) => {
             _id: inquiry._id,
             name: inquiry.name,
             email: inquiry.email,
+            phone: inquiry.phone,
+            organization: inquiry.organization,
             courseName: inquiry.courseName,
             status: inquiry.status
           }
@@ -307,6 +321,9 @@ export const verifyPaymentSimple = async (req, res) => {
         inquiry.razorpayPaymentId = paymentId;
         inquiry.paymentStatus = 'completed';
         inquiry.status = 'enrolled';
+        if (organization) {
+          inquiry.organization = organization;
+        }
         await inquiry.save();
         
         console.log(`Test mode: Payment ${paymentId} for inquiry ${inquiryId} marked as successful`);
@@ -318,6 +335,8 @@ export const verifyPaymentSimple = async (req, res) => {
             _id: inquiry._id,
             name: inquiry.name,
             email: inquiry.email,
+            phone: inquiry.phone,
+            organization: inquiry.organization,
             courseName: inquiry.courseName,
             status: inquiry.status
           }
