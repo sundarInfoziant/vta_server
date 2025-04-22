@@ -16,7 +16,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://vta-client.vercel.app',
+    'http://localhost:3000',  // For local development
+    'http://localhost:5173'   // For Vite's default dev server port
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Connect to MongoDB
