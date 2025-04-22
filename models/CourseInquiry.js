@@ -27,6 +27,11 @@ const courseInquirySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  organization: { // Add this field
+    type: String,
+    default: '', // Make it optional
+    required: true
+  },
   status: {
     type: String,
     enum: ['pending', 'contacted', 'enrolled', 'canceled'],
