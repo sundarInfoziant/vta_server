@@ -20,7 +20,7 @@ app.use(cors({
   origin: [
     'https://vta-client.vercel.app',
     'http://localhost:3000',  // For local development
-    'http://localhost:5173'   // For Vite's default dev server port
+    'http://localhost:5173',   // For Vite's default dev server port
     'https://learning.infoziant.com' //live usage
   ],
   credentials: true
