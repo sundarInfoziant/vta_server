@@ -8,7 +8,7 @@ import bcrypt from 'bcryptjs';
 dotenv.config();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect("mongodb+srv://sundarinfoziant:ceahzJvShvxIE3tM@infoziant.byupx6p.mongodb.net/?retryWrites=true&w=majority&appName=infoziant")
   .then(() => console.log('MongoDB connected for seeding data'))
   .catch(err => {
     console.error('MongoDB connection error:', err);
@@ -18,82 +18,72 @@ mongoose.connect(process.env.MONGODB_URI)
 // Sample courses data
 const coursesData = [
   {
-    title: 'Complete Web Development Bootcamp',
-    description: 'Learn web development from scratch. This comprehensive course covers HTML, CSS, JavaScript, React, Node.js, and MongoDB to build full-stack applications.',
-    image: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop',
-    instructor: 'Sarah Johnson',
-    price: 1299,
-    duration: '12 weeks',
-    level: 'Beginner',
-    topics: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB'],
-    rating: 4.7,
-    enrollmentCount: 3254,
-    featured: true
-  },
-  {
-    title: 'Advanced React & Redux Masterclass',
-    description: 'Take your React skills to the next level with advanced patterns, hooks, context API, and Redux for state management in complex applications.',
-    image: 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&auto=format&fit=crop',
-    instructor: 'Michael Chen',
-    price: 999,
-    duration: '8 weeks',
-    level: 'Advanced',
-    topics: ['React', 'Redux', 'Context API', 'Hooks', 'Testing', 'Performance Optimization'],
-    rating: 4.8,
-    enrollmentCount: 1876,
-    featured: true
-  },
-  {
-    title: 'Python for Data Science & Machine Learning',
-    description: 'Master Python for data analysis, visualization, and machine learning. Learn NumPy, Pandas, Matplotlib, Scikit-Learn, and TensorFlow.',
-    image: 'https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?w=800&auto=format&fit=crop',
-    instructor: 'David Wilson',
+    title: 'AI & Machine Learning Internship Program',
+    description: 'Comprehensive internship program covering Python for Data Science, machine learning models, and practical applications with mini-project deployment.',
+    image: 'https://plus.unsplash.com/premium_photo-1682124651258-410b25fa9dc0?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFjaGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHww?w=800&auto=format&fit=crop',
+    instructor: 'AICL Infoziant Team',
     price: 1499,
-    duration: '10 weeks',
-    level: 'Intermediate',
-    topics: ['Python', 'NumPy', 'Pandas', 'Matplotlib', 'Scikit-Learn', 'TensorFlow'],
-    rating: 4.9,
-    enrollmentCount: 2192,
-    featured: true
-  },
-  {
-    title: 'UI/UX Design Principles',
-    description: 'Learn modern UI/UX design principles and create stunning user interfaces with Figma. Master wireframing, prototyping, and user testing.',
-    image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&auto=format&fit=crop',
-    instructor: 'Emily Rodriguez',
-    price: 899,
-    duration: '6 weeks',
-    level: 'Beginner',
-    topics: ['UI Design', 'UX Design', 'Figma', 'Wireframing', 'Prototyping', 'User Testing'],
-    rating: 4.6,
-    enrollmentCount: 1543,
-    featured: false
-  },
-  {
-    title: 'Mobile App Development with Flutter',
-    description: 'Build beautiful, natively compiled apps for iOS and Android from a single codebase using Flutter and Dart.',
-    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format&fit=crop',
-    instructor: 'Alex Patel',
-    price: 1199,
-    duration: '9 weeks',
-    level: 'Intermediate',
-    topics: ['Flutter', 'Dart', 'Mobile Development', 'iOS', 'Android', 'UI Design'],
-    rating: 4.7,
-    enrollmentCount: 1287,
-    featured: false
-  },
-  {
-    title: 'DevOps Engineering & CI/CD Pipelines',
-    description: 'Master DevOps practices including containerization, continuous integration, continuous deployment, and infrastructure as code.',
-    image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&auto=format&fit=crop',
-    instructor: 'James Miller',
-    price: 1399,
-    duration: '8 weeks',
-    level: 'Advanced',
-    topics: ['Docker', 'Kubernetes', 'Jenkins', 'AWS', 'Terraform', 'Git'],
+    duration: '15 days',
+    level: 'Begineer - Intermediate',
+    topics: [
+      'Python for Data Science',
+      'Exploratory Data Analysis (EDA)',
+      'Supervised Learning Models',
+      'Linear Regression',
+      'Logistic Regression',
+      'Tree Models',
+      'Bagging and Boosting',
+      'Unsupervised Learning Models',
+      'Clustering and Neural Networks',
+      'PCA'
+    ],
     rating: 4.8,
-    enrollmentCount: 945,
-    featured: false
+    enrollmentCount: 1256,
+    featured: true,
+    
+  },
+  {
+    title: 'Cyber Security Internship',
+    description: 'Hands-on session with live experience in cybersecurity. You can also get a job opportunity after the internship!',
+    image: 'https://images.unsplash.com/photo-1614064642578-7faacdc6336e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGN5YmVyfGVufDB8fDB8fHww?w=800&auto=format&fit=crop',
+    instructor: 'AICL Infoziant Team',
+    price: 1499,
+    duration: '15 days',  
+    level: 'Beginner to Intermediate',
+    topics: [
+      'Introduction',
+      'Ethical Hacking',
+      'VAPT - Web Application',
+      'Bug Bounty',
+      'Email Security', 
+      'Malware Analysis',
+      'Tools Used: Burpsuite & Ollydbg'
+    ],
+    rating: 4.7,
+    enrollmentCount: 983,
+    featured: true,
+    
+  },
+  {
+    title: 'Web Development Internship',
+    description: 'Live session with mini-project deployment. Learn full-stack web development from basics to advanced concepts.',
+    image: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop',
+    instructor: 'AICL Infoziant Team',
+    price: 1499,
+    duration: '15 days',
+    level: 'Beginner to Intermediate',
+    topics: [
+      'Introduction to Web Development',
+      'HTML, CSS',
+      'Javascript Version Control with Git',
+      'Backend Dev - Python',
+      'PHP, Node',
+      'DB - MongoDB',
+      'Framework - React.js'
+    ],
+    rating: 4.9,
+    enrollmentCount: 1475,
+    featured: true,
   }
 ];
 
