@@ -9,6 +9,8 @@ import courseRoutes from './routes/courseRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
 import courseInquiryRoutes from './routes/courseInquiryRoutes.js';
 
+
+
 dotenv.config();
 
 const app = express();
@@ -36,6 +38,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/course-inquiries', courseInquiryRoutes);
+
+
 
 // Guest enrollment endpoints
 app.post('/api/enrollment/guest-enrollment', async (req, res) => {

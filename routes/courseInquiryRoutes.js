@@ -17,6 +17,6 @@ router.post('/verify-payment', verifyInquiryPayment);
 router.post('/verify-payment-simple', verifyPaymentSimple);
 
 // Admin routes
-router.get('/', protect, admin, getInquiries);
+router.get('/', protect, getInquiries);
 
 export default router; 
