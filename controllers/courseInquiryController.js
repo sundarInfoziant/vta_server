@@ -26,9 +26,9 @@ if (hasRazorpayCredentials) {
 // @access  Public
 export const createCourseInquiry = async (req, res) => {
   try {
-    const { name, email, phone, courseId, organization } = req.body;
+    const { name, email, phone, courseId, organization, degree, department, year } = req.body;
     
-    if (!name || !email || !phone || !courseId || !organization) {
+    if (!name || !email || !phone || !courseId || !organization || !degree || !department || !year) {
       return res.status(400).json({ message: 'All fields are required' });
     }
     
@@ -44,6 +44,9 @@ export const createCourseInquiry = async (req, res) => {
       email,
       phone,
       organization,
+      degree,
+      department,
+      year,
       courseId,
       courseName: course.title
     });
@@ -54,6 +57,10 @@ export const createCourseInquiry = async (req, res) => {
       email: inquiry.email,
       phone: inquiry.phone,
       organization: inquiry.organization, 
+      degree: inquiry.degree,
+      department: inquiry.department,
+      year: inquiry.year,
+
       courseId: inquiry.courseId,
       courseName: inquiry.courseName,
       message: 'Inquiry received successfully'
@@ -298,6 +305,9 @@ export const verifyPaymentSimple = async (req, res) => {
             email: inquiry.email,
             phone: inquiry.phone,
             organization: inquiry.organization,
+            degree: inquiry.degree,
+            department: inquiry.department,
+            year: inquiry.year,
             courseName: inquiry.courseName,
             status: inquiry.status
           }
@@ -337,6 +347,9 @@ export const verifyPaymentSimple = async (req, res) => {
             email: inquiry.email,
             phone: inquiry.phone,
             organization: inquiry.organization,
+            degree: inquiry.degree,
+            department: inquiry.department,
+            year: inquiry.year,
             courseName: inquiry.courseName,
             status: inquiry.status
           }
