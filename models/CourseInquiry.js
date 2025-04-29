@@ -19,8 +19,8 @@ const courseInquirySchema = new mongoose.Schema({
     trim: true
   },
   courseId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course',
+    type: mongoose.Schema.Types.ObjectId || String,
+    ref: 'Course' || '',
     required: true
   },
   courseName: {
